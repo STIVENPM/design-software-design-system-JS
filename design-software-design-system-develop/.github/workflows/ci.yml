@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  tokens:
+    name: Tokens sincronizados
+    runs-on: ubuntu-latest
+
+    # No necesita secrets: la fuente del spec esta versionada en `spec/`.
+    # Los repos de origen son privados y el GITHUB_TOKEN no puede leerlos.
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # E1 de HU-SHELL-005: los tokens deben reflejar 1:1 el spec ratificado.
+      # Falla si alguien edito tokens.generated.* a mano sin regenerar.
+      - name: Verificar que los tokens coinciden con el spec
+        run: npm run check:tokens
+
+      # E4 de HU-SHELL-006: ningun componente puede hardcodear color ni
+      # espaciado. Es el "grep de verificacion" que pide el DoD, automating.
+      - name: Verificar que ningun componente hardcodea tokens
+        run: npm run check:no-hardcode
+
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run lint
+
+      - name: Verificar integridad del diff
+        run: git diff --check

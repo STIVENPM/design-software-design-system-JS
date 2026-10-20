@@ -1,0 +1,19 @@
+{
+  "sourceRepository": "code-sena/design-software-docs",
+  "sourceCommit": "e1d9b06a8710f97b7f5361b46af98a6ba257ca39",
+  "files": {
+    "designTokens": {
+      "path": "12-ux-ui/mockup-ddd/design-tokens.md",
+      "sha256": "a3e0eed5e71964bc5030a1b2e18df50f8a85d79f6ff4ea1e16c4d6e11c29f2c3"
+    },
+    "canonicalCss": {
+      "path": "12-ux-ui/mockup-ddd/mockups/app/assets/tokens.css",
+      "sha256": "7f89e6baaeaab60c78d380ee8a390e2a1072bf8c4ca9794d304c376506b32371"
+    }
+  },
+  "lineEndings": {
+    "versionedCopy": "LF normalized during sync",
+    "hash": "LF/CRLF normalized to LF before SHA-256",
+    "parser": "LF/CRLF normalized by parser"
+  }
+}

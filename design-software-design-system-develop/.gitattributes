@@ -1,0 +1,13 @@
+# Los tokens son generados: el generador siempre escribe LF. Sin esto, Git los
+# convierte a CRLF en Windows y `npm run check:tokens` falla por finales de linea,
+# aunque el contenido sea identico. Mismo problema ocurriría en CI de Windows.
+src/tokens/tokens.generated.ts text eol=lf
+src/tokens/tokens.generated.css text eol=lf
+
+*.ts text eol=lf
+*.mjs text eol=lf
+*.mts text eol=lf
+*.css text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+spec/design-tokens.md text eol=lf
